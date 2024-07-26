@@ -1,9 +1,10 @@
 name: Index docs to Typesense
 
 on:
-  push:
-    branches:
-      - docs
+  push: []
+  # push:
+  #   branches:
+  #     - docs
 
 jobs:
   index_docs:

@@ -3,15 +3,18 @@ name: Build & Test
 on:
   push:
     branches:
-      - master
-      - major
-      - minor
-      - parallel-e2e
-  pull_request:
-    branches:
-      - master
-      - major
-      - minor
+      - fork
+  # push:
+  #   branches:
+  #     - master
+  #     - major
+  #     - minor
+  #     - parallel-e2e
+  # pull_request:
+  #   branches:
+  #     - master
+  #     - major
+  #     - minor
 env:
   CI: true
   node: 20.x

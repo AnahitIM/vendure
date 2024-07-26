@@ -1,16 +1,17 @@
 name: Publish & Install
 on:
-  push:
-    branches:
-      - master
-      - major
-      - minor
-      - parallel-e2e
-  pull_request:
-    branches:
-      - master
-      - major
-      - minor
+  push: []
+  # push:
+  #   branches:
+  #     - master
+  #     - major
+  #     - minor
+  #     - parallel-e2e
+  # pull_request:
+  #   branches:
+  #     - master
+  #     - major
+  #     - minor
 defaults:
   run:
     shell: bash
