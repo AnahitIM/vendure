@@ -22,18 +22,28 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      actions: read
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ env.node }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ env.node }}
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@AnahitIM'
     - name: npm install
       run: |
         npm install
         npm install --os=linux --cpu=x64 sharp
     - name: Build
       run: npm run build
+    - name: publish
+        run: npm publish --access restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   unit-tests:
     name: unit tests
     runs-on: ubuntu-latest
