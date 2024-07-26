@@ -42,7 +42,7 @@ jobs:
       run: npm run build
     - name: Show list
       run: ls -la
-    -name: Current directory
+    - name: Current directory
       run: pwd
     # - name: publish
     #   run: npm publish --access restricted
