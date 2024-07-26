@@ -44,10 +44,12 @@ jobs:
       run: ls -la
     - name: Current directory
       run: pwd
-    # - name: publish
-    #   run: npm publish --access restricted
-    #   env:
-    #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Change directory to admin
+      run: cd ./packages/admin-ui/dist
+    - name: publish
+      run: npm publish --access restricted
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   unit-tests:
     name: unit tests
     runs-on: ubuntu-latest
