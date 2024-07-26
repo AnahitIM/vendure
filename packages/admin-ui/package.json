@@ -1,6 +1,6 @@
 {
-    "name": "@vendure/admin-ui",
-    "version": "3.0.0",
+    "name": "@AnahitIM/admin-ui",
+    "version": "3.0.2",
     "license": "GPL-3.0-or-later",
     "scripts": {
         "ng": "ng",
@@ -113,5 +113,13 @@
         "puppeteer": "^19.8.3",
         "rimraf": "^5.0.5",
         "typescript": "5.3.3"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com",
+        "access": "restricted"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AnahitIM/vendure.git"
     }
 }
