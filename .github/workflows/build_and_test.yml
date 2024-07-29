@@ -34,6 +34,8 @@ jobs:
         node-version: ${{ env.node }}
         registry-url: 'https://npm.pkg.github.com'
         scope: '@AnahitIM'
+    - name: Install jq
+      run: apt-get install -y jq
     - name: npm install
       run: |
         npm install
@@ -46,6 +48,20 @@ jobs:
       run: cd ./packages/email-plugin
     - name: Show list
       run: ls -la
+    - name: Update package.json
+      run: |
+        NEW_REGISTRY="https://npm.pkg.github.com"
+        NEW_ACCESS="restricted"
+        NEW_REPO_URL="git+https://github.com/AnahitIM/vendure.git"
+        REPO_TYPE="git"
+        NEW_NAME="@AnahitIM/email-plugin"
+
+        # Use jq to update the package.json fields
+        jq --arg registry "$NEW_REGISTRY" --arg access "$NEW_ACCESS" '.publishConfig = {registry: $registry, access: $access}' package.json > package.tmp.json && mv package.tmp.json package.json
+        jq --arg url "$NEW_REPO_URL" --arg type "$REPO_TYPE" '.repository = {type: $type, url: $url}' package.json > package.tmp.json && mv package.tmp.json package.json
+        jq --arg name "$NEW_NAME" '.name = $name' package.json > package.tmp.json && mv package.tmp.json package.json
+
+        echo "Updated package.json"
     - name: publish
       run: npm publish --access restricted
       env:
