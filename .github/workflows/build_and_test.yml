@@ -40,12 +40,12 @@ jobs:
         npm install --os=linux --cpu=x64 sharp
     - name: Build
       run: npm run build
-    - name: Show list
-      run: ls -la
     - name: Current directory
       run: pwd
     - name: Change directory to admin
-      run: cd ./packages/admin-ui/dist
+      run: cd ./packages/email-plugin
+    - name: Show list
+      run: ls -la
     - name: publish
       run: npm publish --access restricted
       env:
