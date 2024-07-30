@@ -44,8 +44,8 @@ jobs:
       run: npm run build
     - name: Current directory
       run: pwd
-    - name: Change directory to admin
-      run: cd ./packages/email-plugin
+    - name: Change directory to email-plugin
+      run: cd /packages/email-plugin
     - name: Show list
       run: ls -la
     - name: Update package.json
@@ -62,6 +62,8 @@ jobs:
         jq --arg name "$NEW_NAME" '.name = $name' package.json > package.tmp.json && mv package.tmp.json package.json
 
         echo "Updated package.json"
+    - name: Show list
+      run: ls -la
     - name: publish
       run: npm publish --access restricted
       env:
